@@ -43,3 +43,11 @@ export const toggleTopShow = (show) => ({
     type: constants.TOGGLE_SCROLL_TOP,
     show
 });
+
+export const mouseEnter = () => ({
+    type: constants.MOUSE_ENTER
+});
+
+export const mouseLeave = () => ({
+    type: constants.MOUSE_LEAVE
+});

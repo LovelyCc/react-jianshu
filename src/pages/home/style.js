@@ -22,9 +22,60 @@ export const BannerWrapper = styled.div`
     width: 100%;
     height: 270px;
     position: relative;
-    .btn-go {
-        
+`;
+
+export const BannerBtn = styled.span`
+    display: block;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 40px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: rgba(0,0,0,.4);
+    z-index: 99;
+    color: #fff;
+    &.go-left {
+        left: 0;
+        border-radius: 0 6px 6px 0;
     }
+    &.go-right {
+        right: 0;
+        border-radius: 6px 0 0 6px;
+    }
+    
+    &.fade-enter {
+        opacity: 0;
+        display: block;
+    }
+    
+    &.fade-enter-active {
+        opacity: 1;
+        transition: all 200ms ease-in;
+    }
+    
+    &.fade-enter-done {
+        opacity: 1;
+        display: block;
+    }
+    
+    &.fade-exit {
+        opacity: 1;
+    }
+    
+    &.fade-exit-active {
+        opacity: 0;
+        transition: all 200ms ease-in;
+    }
+    
+    &.fade-exit-done {
+        opacity: 0;
+        display: none;
+    }
+
 `;
 
 export const HomeRight = styled.div`

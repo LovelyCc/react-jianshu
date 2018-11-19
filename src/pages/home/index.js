@@ -5,6 +5,7 @@ import List from './components/List';
 import Writer from './components/Writer';
 import Recommend from './components/Recommend';
 import DownloadApp from './components/DownloadApp';
+import {CSSTransition} from 'react-transition-group';
 import {actionCreators} from './store';
 import {Carousel} from 'antd';
 import {
@@ -12,26 +13,47 @@ import {
     HomeLeft,
     HomeRight,
     BackTop,
-    BannerWrapper
+    BannerWrapper,
+    BannerBtn
 } from './style';
 
 class Home extends PureComponent {
     render() {
-        const {showScroll, bannerList} = this.props;
+        const {showScroll, bannerList, isHover, mouseEnter, mouseLeave} = this.props;
         return (
             <div>
                 <HomeWrapper>
                     <HomeLeft>
-                        <BannerWrapper>
-                            <span className='btn-go go-left'>《</span>
-                            <span className='btn-go go-right'>》</span>
-                            <Carousel autoplay>
+                        <BannerWrapper
+                            onMouseEnter={mouseEnter}
+                            onMouseLeave={mouseLeave}
+                        >
+                            <CSSTransition
+                                in={isHover}
+                                timeout={200}
+                                classNames="fade"
+                            >
+                                <BannerBtn className='btn-go go-left' onClick={() => {this.carouselRef.prev()}}><i
+                                    className="iconfont my-icon">&#xe617;</i></BannerBtn>
+                            </CSSTransition>
+                            <CSSTransition
+                                in={isHover}
+                                timeout={200}
+                                classNames="fade"
+                            >
+                                <BannerBtn className='btn-go go-right' onClick={() => {this.carouselRef.next()}}><i
+                                    className="iconfont my-icon">&#xe638;</i></BannerBtn>
+                            </CSSTransition>
+
+                            <Carousel autoplay ref={(carouselRef) => { this.carouselRef = carouselRef}}>
+
                                 {
                                     bannerList.map((item) => {
                                         return <div key={item.get('id')}>
                                             <img className='banner-img'
                                                  src={item.get('imgUrl')}
-                                                 alt=""/>
+                                                 alt=""
+                                            />
                                         </div>
                                     })
                                 }
@@ -76,7 +98,8 @@ class Home extends PureComponent {
 
 const mapState = (state) => ({
     showScroll: state.getIn(['home', 'showScroll']),
-    bannerList: state.getIn(['home', 'bannerList'])
+    bannerList: state.getIn(['home', 'bannerList']),
+    isHover: state.getIn(['home', 'isHover']),
 });
 
 const mapDispatch = (dispatch) => ({
@@ -89,6 +112,14 @@ const mapDispatch = (dispatch) => ({
         } else {
             dispatch(actionCreators.toggleTopShow(false))
         }
+    },
+
+    mouseEnter() {
+        dispatch(actionCreators.mouseEnter());
+    },
+
+    mouseLeave() {
+        dispatch(actionCreators.mouseLeave());
     }
 });
 

@@ -8,7 +8,8 @@ const defaultState = fromJS({
     writerList: [],
     articlePage: 1,
     showScroll: false,
-    bannerList: []
+    bannerList: [],
+    isHover: false
 });
 
 const changeHomeData = (state, action) => {
@@ -36,6 +37,10 @@ export default (state = defaultState, action) => {
             return addArticleList(state, action);
         case constants.TOGGLE_SCROLL_TOP:
             return state.set('showScroll', action.show);
+        case constants.MOUSE_ENTER:
+            return state.set('isHover', true);
+        case constants.MOUSE_LEAVE:
+            return state.set('isHover', false);
         default:
             return state;
     }
