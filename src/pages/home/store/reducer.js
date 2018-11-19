@@ -7,7 +7,8 @@ const defaultState = fromJS({
     recommendList: [],
     writerList: [],
     articlePage: 1,
-    showScroll: false
+    showScroll: false,
+    bannerList: []
 });
 
 const changeHomeData = (state, action) => {
@@ -15,7 +16,8 @@ const changeHomeData = (state, action) => {
         topicList: fromJS(action.topicList),
         recommendList: fromJS(action.recommendList),
         articleList: fromJS(action.articleList),
-        writerList: fromJS(action.writerList)
+        writerList: fromJS(action.writerList),
+        bannerList: fromJS(action.bannerList)
     });
 };
 

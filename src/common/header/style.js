@@ -29,6 +29,7 @@ export const NavItem = styled.span`
   padding: 0 15px;
   font-size: 17px;
   color: #333;
+  cursor: pointer;
   &.left {
     float: left
   }
@@ -38,6 +39,13 @@ export const NavItem = styled.span`
   }
   &.active {
     color: #ea6f5a
+  }
+  .my-icon {
+    font-size: 18px;
+    margin-right: 3px;
+  }
+  &:hover {
+    background: #f5f5f5;
   }
 `;
 

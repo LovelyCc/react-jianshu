@@ -68,14 +68,24 @@ class Header extends Component {
                     <Logo/>
                 </Link>
                 <Nav>
-                    <NavItem className='left active'>首页</NavItem>
-                    <NavItem className='left'>下载</NavItem>
+                    {
+                        login ? <NavItem className='left'><i className="iconfont my-icon">&#xe627;</i>发现</NavItem> :
+                            <NavItem className='left active'>首页</NavItem>
+                    }
+                    {
+                        login ? <NavItem className='left'><i className="iconfont my-icon">&#xe748;</i>关注</NavItem> :
+                            <NavItem className='left'>下载</NavItem>
+                    }
+                    {
+                        login ?
+                            <NavItem className='left'><i className="iconfont my-icon">&#xe6f5;</i>消息</NavItem> : null
+                    }
                     {
                         login ? <NavItem className='right' onClick={logout}>退出</NavItem> :
                             <Link to='/login'><NavItem className='right'>登录</NavItem></Link>
                     }
                     <NavItem className='right'>
-                        <i className="iconfont">&#xe636;</i>
+
                     </NavItem>
                     <SearchWrapper>
                         <CSSTransition

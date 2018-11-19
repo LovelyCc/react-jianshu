@@ -14,6 +14,16 @@ export const HomeLeft = styled.div`
     .banner-img {
         width: 625px;
         height: 270px;
+        border-radius: 6px;
+    }
+`;
+
+export const BannerWrapper = styled.div`
+    width: 100%;
+    height: 270px;
+    position: relative;
+    .btn-go {
+        
     }
 `;
 

@@ -6,23 +6,38 @@ import Writer from './components/Writer';
 import Recommend from './components/Recommend';
 import DownloadApp from './components/DownloadApp';
 import {actionCreators} from './store';
+import {Carousel} from 'antd';
 import {
     HomeWrapper,
     HomeLeft,
     HomeRight,
-    BackTop
+    BackTop,
+    BannerWrapper
 } from './style';
 
 class Home extends PureComponent {
     render() {
-        const {showScroll} = this.props;
+        const {showScroll, bannerList} = this.props;
         return (
             <div>
                 <HomeWrapper>
                     <HomeLeft>
-                        <img className='banner-img'
-                             src="//upload.jianshu.io/admin_banners/web_images/4576/feab4469e6317fe3627d23d80fd6d0da09b556e3.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540"
-                             alt=""/>
+                        <BannerWrapper>
+                            <span className='btn-go go-left'>《</span>
+                            <span className='btn-go go-right'>》</span>
+                            <Carousel autoplay>
+                                {
+                                    bannerList.map((item) => {
+                                        return <div key={item.get('id')}>
+                                            <img className='banner-img'
+                                                 src={item.get('imgUrl')}
+                                                 alt=""/>
+                                        </div>
+                                    })
+                                }
+                            </Carousel>
+                        </BannerWrapper>
+
                         <Topic/>
                         <List/>
                     </HomeLeft>
@@ -58,8 +73,10 @@ class Home extends PureComponent {
     }
 }
 
+
 const mapState = (state) => ({
-    showScroll: state.getIn(['home', 'showScroll'])
+    showScroll: state.getIn(['home', 'showScroll']),
+    bannerList: state.getIn(['home', 'bannerList'])
 });
 
 const mapDispatch = (dispatch) => ({
