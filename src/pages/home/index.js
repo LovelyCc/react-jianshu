@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React, {PureComponent, Fragment} from 'react';
 import {connect} from 'react-redux';
 import Topic from './components/Topic';
 import List from './components/List';
@@ -21,7 +21,7 @@ class Home extends PureComponent {
     render() {
         const {showScroll, bannerList, isHover, mouseEnter, mouseLeave} = this.props;
         return (
-            <div>
+            <Fragment>
                 <HomeWrapper>
                     <HomeLeft>
                         <BannerWrapper
@@ -73,7 +73,7 @@ class Home extends PureComponent {
                     </HomeRight>
                     {showScroll ? <BackTop onClick={this.handleScrollTop}>顶部</BackTop> : null}
                 </HomeWrapper>
-            </div>
+            </Fragment>
         )
     }
 

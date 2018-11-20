@@ -5,6 +5,7 @@ export const HeaderWrapper = styled.div`
   position: relative;
   height: 56px;
   border-bottom: 1px solid #f0f0f0;
+  z-index: 1;
 `;
 
 export const Logo = styled.div`
@@ -21,7 +22,10 @@ export const Logo = styled.div`
 export const Nav = styled.div`
   width: 960px;
   height: 100%;
-  margin: 0 auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
 `;
 
 export const NavItem = styled.span`

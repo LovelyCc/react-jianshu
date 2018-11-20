@@ -80,6 +80,8 @@ class Header extends Component {
                         login ?
                             <NavItem className='left'><i className="iconfont my-icon">&#xe6f5;</i>消息</NavItem> : null
                     }
+                    {/*<NavItem className='left active'>首页</NavItem>*/}
+                    {/*<NavItem className='left'>下载</NavItem>*/}
                     {
                         login ? <NavItem className='right' onClick={logout}>退出</NavItem> :
                             <Link to='/login'><NavItem className='right'>登录</NavItem></Link>
